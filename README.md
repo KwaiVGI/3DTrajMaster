@@ -29,11 +29,11 @@
 ## 🌟 Introduction
 
 🔥 3DTrajMaster controls **one or multiple entity motions in 3D space with entity-specific 3D trajectories** for text-to-video (T2V) generation. It has the following features:
-- **6 Domain of Freedom (DoF)**: Control 3D entity location and orientation
-- **Diverse Entities**: Human, animal, robot, car, even abstract fire, breeze, etc
-- **Diverse Background**: City, forest, desert, gym, sunset beach, glacier, hall, night city, etc
-- **Complex 3D trajectories**: 3D occlusion, rotating in place, 180°/continuous 90° turnings, etc
-- **Fine-grained Entity Prompt**: Change human hair, clothing, gender, figure size, accessory, etc
+- **6 Domain of Freedom (DoF)**: control 3D entity location and orientation
+- **Diverse Entities**: human, animal, robot, car, even abstract fire, breeze, etc.
+- **Diverse Background**: city, forest, desert, gym, sunset beach, glacier, hall, night city, etc.
+- **Complex 3D trajectories**: 3D occlusion, rotating in place, 180°/continuous 90° turnings, etc.
+- **Fine-grained Entity Prompt**: change human hair, clothing, gender, figure size, accessories, etc.
 
 https://github.com/user-attachments/assets/efe1870f-4168-4aff-98b8-dbd9e3802928
 
@@ -44,16 +44,16 @@ https://github.com/user-attachments/assets/efe1870f-4168-4aff-98b8-dbd9e3802928
 
 > **(1) Access to Our Internal Video Model**
 
-As per company policy, we may not release the proprietary trained model at this time. However, if you wish to access our internal model, please submit your request via (1) [a shared document](https://docs.google.com/spreadsheets/d/1HL96IS33fyzrDeXTt3hJ80ZsnfRBzDoKh8wparoBAGI/edit?pli=1&gid=0#gid=0) or (2) directly send us via email (`lemonaddie0909@gmail.com`) for request. We will respond to requests with the generated video as quickly as possible.
+As per company policy, we may not release the proprietary trained model at this time. However, if you wish to access our internal model, please submit your request via (1) [a shared document](https://docs.google.com/spreadsheets/d/1HL96IS33fyzrDeXTt3hJ80ZsnfRBzDoKh8wparoBAGI/edit?pli=1&gid=0#gid=0) or (2) directly via email (`lemonaddie0909@gmail.com`); we will respond to requests with the generated video as quickly as possible.
 Please ensure your request includes the following:
 
 1. Entity prompts (1–3, with a maximum of 42 tokens, approximately 20 words per entity)
 2. Location prompt
-3. Trajectory template (You can refer to the trajectory template in our released 360°-Motion Dataset, or simply describe new ones via text)
+3. Trajectory template (you can refer to the trajectory template in our released 360°-Motion Dataset, or simply describe new ones using text)
 
 > **(2) Access to Publicly Available Codebase**
 
-We are currently working on adapting our design to publicly available codebases (e.g., CogVideoX, LTX-Video, Mochi 1, Huanyuan). Below is a comparison between CogVideoX (w/o domain adaptor) and our internal video model as of 12.10. We will release an improved version for research purposes **no later than one week after paper acceptance**.
+We are currently working on adapting our design to publicly-available codebases (e.g., CogVideoX, LTX-Video, Mochi 1, Huanyuan). Below is a comparison between CogVideoX (w/o domain adaptor) and our internal video model as of 12.10. We will release an improved version for research purposes **no later than one week after paper acceptance**.
 
 https://github.com/user-attachments/assets/64ead629-35b2-4424-b771-610a0103022a
 
@@ -61,7 +61,7 @@ https://github.com/user-attachments/assets/64ead629-35b2-4424-b771-610a0103022a
 The following code showcases the core components of 3DTrajMaster, namely the plug-and-play 3D-motion grounded object injector.
 
 ```python
-# 1. norm & modulate
+# 1. normalize & modulate
 norm_hidden_states, norm_empty_encoder_hidden_states, gate_msa, enc_gate_msa = self.norm1(hidden_states, empty_encoder_hidden_states, temb)
 bz, N_visual, dim = norm_hidden_states.shape
 max_entity_num = 3
@@ -117,11 +117,11 @@ hidden_states = hidden_states + gate_msa * attn_hidden_states
 | **RefPic**    | 50 animals     |       **1/2/3 Trajectory Templates**       | 36/60/35 (121 in total) |
 | **{D/N}_{locX}** | {Day/Night}_{LocationX} |  **{C}_ {XX}_{35mm}** | {Close-Up Shot}_{Cam. Index(1-12)} _{Focal Length}|
 
-**Note that** the resolution of 384×672 refers to our internal video diffusion resolution. In fact, we render the video at a resolution of 378×672 (aspect ratio 9:16), with a 3-pixel black border added to both the top and bottom.
+**Note that** the resolution of 384×672 refers to our internal video diffusion resolution -- we render video at a resolution of 378×672 (aspect ratio 9:16), with a 3-pixel black border added to both the top and bottom.
 
 > **(2) Difference with the Dataset to Train on Our Internal Video Diffusion Model**
 
-The release of the full dataset regarding more entities and UE scenes is 1) still under our internal license check, 2) awaiting the paper decision.
+The release of the full dataset with more entities and UE scenes is: 1. still under our internal license check; 2. awaiting the paper decision
 
 |  Argument              | Released Dataset |       Our Internal Dataset|
 |-------------------------|-------------|-------------------------|
@@ -133,23 +133,23 @@ The release of the full dataset regarding more entities and UE scenes is 1) stil
 
 > **(3) Load Dataset Sample**
 
-1. Change root path to `dataset`. We provide a script to load our dataset (video & entity & pose sequence) as follows. It will generate the sampled video for visualization in the same folder path.
+1. Change root path to `dataset`. We provide this script to load our dataset (video & entity & pose sequence), that will generate the sampled video for visualization in the same folder path:
 
     ```bash
     python load_dataset.py
     ```
 
-2. Visualize the 6DoF pose sequence via Open3D as follows.
+2. Visualize the 6DoF pose sequence via Open3D:
 
     ```bash
     python vis_trajecotry.py
     ```
-    After running the visualization script, you will get an interactive window like this. Note that we have converted the right-handed coordinate system (Open3D) to the left-handed coordinate system in order to better align with the motion trajectory of the video
+    After running the visualization script, you will get an interactive window like this. Note that we also converted the right-handed coordinate system (Open3D) to the left-handed coordinate system in order to better align with the motion trajectory of the video:
 
     <img src="imgs/vis_objstraj.png" width="350" />
 
 
-## 🚀 Benchmark Evaluation (Reproduce Paper Results)
+## 🚀 Benchmark Evaluation (reproduces results in the paper)
   ```
   ├── eval
     ├── GVHMR
@@ -158,31 +158,31 @@ The release of the full dataset regarding more entities and UE scenes is 1) stil
 
 > **(1) Evaluation on 3D Trajectory**
 
-1. Change root path to `eval/GVHMR`. Then follow [GVHMR](https://github.com/zju3dv/GVHMR/blob/main/docs/INSTALL.md) installation to prepare the setups and  (recommend using a different Conda environment to avoid package conflicts). Our evaluation input is available at [here](https://drive.google.com/file/d/1DLWioJtvv9u4snybu5DrteVWma12JXq3/view?usp=drive_link). Please note that the 3D trajectories have been downsampled from 77 frames to 20 frames to match the RGB latent space of the 3D VAE.
+1. Change root path to `eval/GVHMR`. Then proceed with the [GVHMR](https://github.com/zju3dv/GVHMR/blob/main/docs/INSTALL.md) installation to prepare the setups (and recommend using a different Conda environment to avoid package conflicts). Our evaluation input is available on [Google Drive](https://drive.google.com/file/d/1DLWioJtvv9u4snybu5DrteVWma12JXq3/view?usp=drive_link). Please note that the 3D trajectories have been downsampled from 77 frames to 20 frames to match the RGB latent space of the 3D VAE.
 
-2. Download the [inference videos](https://drive.google.com/file/d/1jMH2-ZC0ZBgtqej5Sp-E5ebBIX7mk3Xz/view?usp=drive_link) generated by our internal video diffusion model and corresponding [evalution GT poses](https://drive.google.com/file/d/1iFcPSlcKb_rDNJ85UPoThdl22BqR2Xgh/view?usp=drive_link) via the command below. You can check the 3D evaluated trajectory via our provided visualization script.
+2. Download the [inference videos](https://drive.google.com/file/d/1jMH2-ZC0ZBgtqej5Sp-E5ebBIX7mk3Xz/view?usp=drive_link) generated by our internal video diffusion model and corresponding [evalution GT poses](https://drive.google.com/file/d/1iFcPSlcKb_rDNJ85UPoThdl22BqR2Xgh/view?usp=drive_link) by using this command (you can check the 3D evaluated trajectory via our provided visualization script):
     ```bash
     bash download_eval_pose.sh
     ```
 
-3. Estimation for human poses on evaluation sets:
+3. Estimation of human poses on evaluation sets:
     ```bash
     python tools/demo/demo_folder.py -f eval_sets -d outputs/eval_sets_gvhmr -s
     ```
 
-4. Evaluation for all human samples (Note to convert the left and right hand coordinate systems) :
+4. Evaluation of all human samples (note to convert the left and right hand coordinate systems):
     ```bash
     python tools/eval_pose.py -f outputs/eval_sets_gvhmr
     ```
 
 > **(2) Evaluation on Visual Quality**
 
-1. Change root path to `eval/common_metrics_on_video_quality`. Then download [fvd](https://drive.google.com/file/d/1U2hd6qvwKLfp7c8yGgcTqdqrP_lKJElB/view?usp=drive_link), [inference videos](https://drive.google.com/file/d/1jMH2-ZC0ZBgtqej5Sp-E5ebBIX7mk3Xz/view?usp=drive_link) and [base T2V inference videos](https://drive.google.com/file/d/1kfdCDA5koYh9g3IkCCHb4XPch2CJAwek/view?usp=drive_link) through the download command below
+1. Change root path to `eval/common_metrics_on_video_quality`, then download [fvd](https://drive.google.com/file/d/1U2hd6qvwKLfp7c8yGgcTqdqrP_lKJElB/view?usp=drive_link), [inference videos](https://drive.google.com/file/d/1jMH2-ZC0ZBgtqej5Sp-E5ebBIX7mk3Xz/view?usp=drive_link), and [base T2V inference videos](https://drive.google.com/file/d/1kfdCDA5koYh9g3IkCCHb4XPch2CJAwek/view?usp=drive_link) using the download script:
     ```bash
     bash download_eval_visual.sh
     ```
 
-2. Evaluation of FVD, FID, and CLIP-SIM metrics.
+2. Evaluation of FVD, FID, and CLIP-SIM metrics:
     ```bash
     pip install pytorch-fid  clip
     bash eval_visual.sh
@@ -194,12 +194,12 @@ The release of the full dataset regarding more entities and UE scenes is 1) stil
 - [TC4D](https://sherwinbahmani.github.io/tc4d/): compositional text-to-4D scene generation with 3D trajectory conditions
 - [Tora](https://ali-videoai.github.io/tora_video/): control 2D motions in trajectory-oriented diffusion transformer for video generation
 - [SynCamMaster](https://jianhongbai.github.io/SynCamMaster/): multi-camera synchronized video generation from diverse viewpoints
-- [StyleMaster](https://zixuan-ye.github.io/stylemaster): enable artistic video generation and translation with reference style image
+- [StyleMaster](https://zixuan-ye.github.io/stylemaster): enable artistic video generation and translation with reference style imaging
 
 ####
 
 ## 🔗 Citation
-If you find this work helpful, please consider citing:
+Should you find this work helpful, please consider citing:
 ```BibTeXw
 @article{fu20243dtrajmaster,
   title={3DTrajMaster: Mastering 3D Trajectory for Multi-Entity Motion in Video Generation},
@@ -208,3 +208,4 @@ If you find this work helpful, please consider citing:
   year={2024}
 }
 ```
+Thank you.
