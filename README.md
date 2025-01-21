@@ -88,6 +88,20 @@ attn_hidden_states = attn_hidden_states[:,:N_visual,:]
 hidden_states = hidden_states + gate_msa * attn_hidden_states
 ```
 
+#### Training
+
+1. Change root path to `finetune`. First, train lora module to fit the synthetic data domain.
+
+    ```bash
+    bash finetune_single_rank_lora.sh
+    ```
+
+2. Then, train injector module to learn the entity motion controller. Here we set `--block_interval` to 2 to insert the injector every 2 transformer blocks. You can increase this value for a lighter model, but note that it will require a longer training time. For the initial fine-tuning stage, use `--finetune_init`. If resuming from a pre-trained checkpoint, omit `--finetune_init` and specify `--resume_from_checkpoint $TRANSFORMER_PATH` instead.
+
+    ```bash
+    bash finetune_single_rank_injector.sh
+    ```
+
 ## 📦 360°-Motion Dataset ([Download 🤗](https://huggingface.co/datasets/KwaiVGI/360Motion-Dataset))
  ```
   ├── 360Motion-Dataset                      Video Number        Cam-Obj Distance (m)
