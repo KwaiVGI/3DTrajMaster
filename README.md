@@ -53,9 +53,9 @@ Please ensure your request includes the following:
 
 > **(2) Access to Publicly Available Codebase**
 
-We are currently working on adapting our design to publicly available codebases (e.g., CogVideoX, LTX-Video, Mochi 1, Huanyuan). Below is a comparison between CogVideoX (w/o domain adaptor) and our internal video model as of 12.10. We will release an improved version for research purposes **no later than one week after paper acceptance**.
+We are currently working on adapting our design to publicly available codebases (e.g., CogVideoX, LTX-Video, Mochi 1, Huanyuan). Below is a comparison between CogVideoX and our internal video model as of 2025.01.15. We will open-source the code for research purposes **no later than one week after paper acceptance**.
 
-https://github.com/user-attachments/assets/64ead629-35b2-4424-b771-610a0103022a
+https://github.com/user-attachments/assets/a49e46d3-92d0-42ec-a89f-a9d43919f620
 
 #### Code Snapshot (CogVideoX-5B)
 The following code showcases the core components of 3DTrajMaster, namely the plug-and-play 3D-motion grounded object injector.
