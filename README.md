@@ -6,6 +6,7 @@
  <a href='http://fuxiao0719.github.io/projects/3dtrajmaster'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;
  <a href='https://arxiv.org/pdf/2412.07759'><img src='https://img.shields.io/badge/arXiv-2412.07759-b31b1b.svg'></a> &nbsp;
  <a href='https://huggingface.co/datasets/KwaiVGI/360Motion-Dataset'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a> &nbsp;
+  <a href='https://huggingface.co/KwaiVGI/3DTrajMaster'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a> &nbsp;
 
 **[Xiao Fu<sup>1 &dagger;</sup>](https://fuxiao0719.github.io/), 
 [Xian Liu<sup>1</sup>](https://alvinliu0.github.io/), 
@@ -24,6 +25,7 @@
 <br>
 &dagger;: Intern at KwaiVGI, Kuaishou Technology, &#9993;: Corresponding Authors
 
+
 </div>
 
 ## 🌟 Introduction
@@ -38,7 +40,8 @@
 https://github.com/user-attachments/assets/efe1870f-4168-4aff-98b8-dbd9e3802928
 
 🔥 **Release News**
-- `[2024/12/10]` Release [paper](https://arxiv.org/pdf/2412.07759), [project page](http://fuxiao0719.github.io/projects/3dtrajmaster), [dataset](https://huggingface.co/datasets/KwaiVGI/360Motion-Dataset), and [code](https://github.com/KwaiVGI/3DTrajMaster).
+- `[2025/01/22]` Release inference and training codes based on CogVideoX-5B.
+- `[2024/12/10]` Release [paper](https://arxiv.org/pdf/2412.07759), [project page](http://fuxiao0719.github.io/projects/3dtrajmaster), [dataset](https://huggingface.co/datasets/KwaiVGI/360Motion-Dataset), and [eval code](https://github.com/KwaiVGI/3DTrajMaster).
 
 ## ⚙️ Quick Start
 
@@ -53,40 +56,71 @@ Please ensure your request includes the following:
 
 > **(2) Access to Publicly Available Codebase**
 
-We are currently working on adapting our design to publicly available codebases (e.g., CogVideoX, LTX-Video, Mochi 1, Huanyuan). Below is a comparison between CogVideoX and our internal video model as of 2025.01.15. We will open-source the code for research purposes **no later than one week after paper acceptance**.
+We open-source a model based on CogVideoX-5B. Below is a comparison between CogVideoX and our internal video model as of 2025.01.15.
 
 https://github.com/user-attachments/assets/a49e46d3-92d0-42ec-a89f-a9d43919f620
 
-#### Code Snapshot (CogVideoX-5B)
-The following code showcases the core components of 3DTrajMaster, namely the plug-and-play 3D-motion grounded object injector.
 
-```python
-# 1. norm & modulate
-norm_hidden_states, norm_empty_encoder_hidden_states, gate_msa, enc_gate_msa = self.norm1(hidden_states, empty_encoder_hidden_states, temb)
-bz, N_visual, dim = norm_hidden_states.shape
-max_entity_num = 3
-_, entity_num, num_frames, _ = pose_embeds.shape
+#### Inference
+1. **[Environment Set Up]** Our environment setup is identical to [CogVideoX](https://github.com/THUDM/CogVideo). You can refer to their configuration to complete the environment setup.
 
-# 2. pair-wise fusion of trajectory and entity
-attn_input = self.attn_null_feature.repeat(bz, max_entity_num, 50, num_frames, 1)
-pose_embeds = self.pose_fuse_layer(pose_embeds)
-attn_input[:,:entity_num,:,:,:] = pose_embeds.unsqueeze(-3) + prompt_entities_embeds.unsqueeze(-2)
-attn_input = torch.cat((
-    rearrange(norm_hidden_states, "b (n t) d -> b n t d",n=num_frames), 
-    rearrange(attn_input, "b n t f d -> b f (n t) d")),
-    dim=2
-).flatten(1,2)
+    ```bash
+    conda create -n 3dtrajmaster python=3.10
+    conda activate 3dtrajmaster
+    pip install -r requirements.txt
+    ```
 
-# 3. gated self-attention
-attn_hidden_states, attn_encoder_hidden_states = self.attn1_injector(
-    hidden_states=attn_input,
-    encoder_hidden_states=norm_empty_encoder_hidden_states,
-    image_rotary_emb=image_rotary_emb,
-)
-attn_hidden_states = attn_hidden_states[:,:N_visual,:]
+2. **[Download Weights and Dataset]** Download the pretrained checkpoints (CogVideo-5B, LoRA, and injector) from [here](https://huggingface.co/KwaiVGI/3DTrajMaster) and put them under `weights` and place them in the `weights` directory. Then, download the dataset from [here](https://huggingface.co/datasets/KwaiVGI/360Motion-Dataset). Please note that in both training stages, we use only 11 camera poses and exclude the last camera pose as the novel pose setting.
 
-hidden_states = hidden_states + gate_msa * attn_hidden_states
-```
+3. **[Inference on Generalizable Prompts]** Change root path to `inference`. Note a higher LoRA scale and more annealed steps can improve accuracy in prompt generation but may result in lower visual quality. For entity input, you can use GPT to enhance the description to an appropriate length, such as "Generate a detailed description of approximately 20 words".
+
+    ```bash
+    python 3dtrajmaster_inference.py \
+        --model_path ../weights/cogvideox-5b \
+        --ckpt_path ../weights/injector \
+        --lora_path ../weights/lora \
+        --lora_scale 0.6 \
+        --annealed_sample_step 20 \
+        --seed 24 \
+        --output_path output
+    ```
+
+    | Argument                | Description |
+    |-------------------------|-------------|
+    | `--lora_scale`            | LoRA alpha weight. Options: 0-1, float. Default: 0.6. |
+    | `--annealed_sample_step`  | annealed sampling steps during inference. Options: 0-50, int. Default: 20. |
+    | Generalizable Robustness  | prompt entity number: 1>2>3 |
+    | Entity Length  | 15-24 words, ~24-40 tokens after T5 embeddings |
+
+    The following code snapshot showcases the core components of 3DTrajMaster, namely the plug-and-play 3D-motion grounded object injector.
+
+    ```python
+    # 1. norm & modulate
+    norm_hidden_states, norm_empty_encoder_hidden_states, gate_msa, enc_gate_msa = self.norm1(hidden_states, empty_encoder_hidden_states, temb)
+    bz, N_visual, dim = norm_hidden_states.shape
+    max_entity_num = 3
+    _, entity_num, num_frames, _ = pose_embeds.shape
+
+    # 2. pair-wise fusion of trajectory and entity
+    attn_input = self.attn_null_feature.repeat(bz, max_entity_num, 50, num_frames, 1)
+    pose_embeds = self.pose_fuse_layer(pose_embeds)
+    attn_input[:,:entity_num,:,:,:] = pose_embeds.unsqueeze(-3) + prompt_entities_embeds.unsqueeze(-2)
+    attn_input = torch.cat((
+        rearrange(norm_hidden_states, "b (n t) d -> b n t d",n=num_frames), 
+        rearrange(attn_input, "b n t f d -> b f (n t) d")),
+        dim=2
+    ).flatten(1,2)
+
+    # 3. gated self-attention
+    attn_hidden_states, attn_encoder_hidden_states = self.attn1_injector(
+        hidden_states=attn_input,
+        encoder_hidden_states=norm_empty_encoder_hidden_states,
+        image_rotary_emb=image_rotary_emb,
+    )
+    attn_hidden_states = attn_hidden_states[:,:N_visual,:]
+
+    hidden_states = hidden_states + gate_msa * attn_hidden_states
+    ```
 
 #### Training
 
@@ -96,7 +130,7 @@ hidden_states = hidden_states + gate_msa * attn_hidden_states
     bash finetune_single_rank_lora.sh
     ```
 
-2. Then, train injector module to learn the entity motion controller. Here we set `--block_interval` to 2 to insert the injector every 2 transformer blocks. You can increase this value for a lighter model, but note that it will require a longer training time. For the initial fine-tuning stage, use `--finetune_init`. If resuming from a pre-trained checkpoint, omit `--finetune_init` and specify `--resume_from_checkpoint $TRANSFORMER_PATH` instead.
+2. Then, train injector module to learn the entity motion controller. Here we set `--block_interval` to 2 to insert the injector every 2 transformer blocks. You can increase this value for a lighter model, but note that it will require a longer training time. For the initial fine-tuning stage, use `--finetune_init`. If resuming from a pre-trained checkpoint, omit `--finetune_init` and specify `--resume_from_checkpoint $TRANSFORMER_PATH` instead. Note that in both training stages, we use only 11 camera poses and exclude the last camera pose as the novel pose setting.
 
     ```bash
     bash finetune_single_rank_injector.sh
