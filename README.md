@@ -25,6 +25,7 @@
 <br>
 &dagger;: Intern at KwaiVGI, Kuaishou Technology, &#9993;: Corresponding Authors
 
+**ICLR 2025**
 
 </div>
 
@@ -40,6 +41,7 @@
 https://github.com/user-attachments/assets/efe1870f-4168-4aff-98b8-dbd9e3802928
 
 🔥 **Release News**
+- `[2025/01/23]` 3DTrajMaster is accepted to ICLR 2025.
 - `[2025/01/22]` Release inference and training codes based on CogVideoX-5B.
 - `[2024/12/10]` Release [paper](https://arxiv.org/pdf/2412.07759), [project page](http://fuxiao0719.github.io/projects/3dtrajmaster), [dataset](https://huggingface.co/datasets/KwaiVGI/360Motion-Dataset), and [eval code](https://github.com/KwaiVGI/3DTrajMaster).
 
@@ -249,10 +251,10 @@ The release of the full dataset regarding more entities and UE scenes is 1) stil
 ## 🔗 Citation
 If you find this work helpful, please consider citing:
 ```BibTeXw
-@article{fu20243dtrajmaster,
+@inproceedings{fu20243dtrajmaster,
   title={3DTrajMaster: Mastering 3D Trajectory for Multi-Entity Motion in Video Generation},
   author={Fu, Xiao and Liu, Xian and Wang, Xintao and Peng, Sida and Xia, Menghan and Shi, Xiaoyu and Yuan, Ziyang and Wan, Pengfei and Zhang, Di and Lin, Dahua},
-  journal={arXiv preprint arXiv:2412.07759},
-  year={2024}
+  booktitle={ICLR},
+  year={2025}
 }
 ```
