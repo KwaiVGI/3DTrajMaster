@@ -72,7 +72,7 @@ https://github.com/user-attachments/assets/a49e46d3-92d0-42ec-a89f-a9d43919f620
     pip install -r requirements.txt
     ```
 
-2. **[Download Weights and Dataset]** Download the pretrained checkpoints (CogVideo-5B, LoRA, and injector) from [here](https://huggingface.co/KwaiVGI/3DTrajMaster) and put them under `weights` and place them in the `weights` directory. Then, download the dataset from [here](https://huggingface.co/datasets/KwaiVGI/360Motion-Dataset). Please note that in both training stages, we use only 11 camera poses and exclude the last camera pose as the novel pose setting.
+2. **[Download Weights and Dataset]** Download the pretrained checkpoints (CogVideo-5B, LoRA, and injector) from [here](https://huggingface.co/KwaiVGI/3DTrajMaster) and place them in the `weights` directory. Then, download the dataset from [here](https://huggingface.co/datasets/KwaiVGI/360Motion-Dataset). Please note that in both training stages, we use only 11 camera poses and exclude the last camera pose as the novel pose setting.
 
 3. **[Inference on Generalizable Prompts]** Change root path to `inference`. Note a higher LoRA scale and more annealed steps can improve accuracy in prompt generation but may result in lower visual quality. For entity input, you can use GPT to enhance the description to an appropriate length, such as "Generate a detailed description of approximately 20 words".
 
@@ -171,7 +171,7 @@ https://github.com/user-attachments/assets/a49e46d3-92d0-42ec-a89f-a9d43919f620
 
 > **(2) Difference with the Dataset to Train on Our Internal Video Diffusion Model**
 
-The release of the full dataset regarding more entities and UE scenes is 1) still under our internal license check; 2) awaiting the paper decision.
+The release of the full dataset regarding more entities and UE scenes is still under our internal license check.
 
 |  Argument              | Released Dataset |       Our Internal Dataset|
 |-------------------------|-------------|-------------------------|
