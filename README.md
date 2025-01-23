@@ -72,9 +72,9 @@ https://github.com/user-attachments/assets/a49e46d3-92d0-42ec-a89f-a9d43919f620
     pip install -r requirements.txt
     ```
 
-2. **[Download Weights and Dataset]** Download the pretrained checkpoints (CogVideo-5B, LoRA, and injector) from [here](https://huggingface.co/KwaiVGI/3DTrajMaster) and place them in the `weights` directory. Then, download the dataset from [here](https://huggingface.co/datasets/KwaiVGI/360Motion-Dataset). Please note that in both training stages, we use only 11 camera poses and exclude the last camera pose as the novel pose setting.
+2. **[Download Weights and Dataset]** Download the pretrained checkpoints (CogVideo-5B, LoRA, and injector) from [here](https://huggingface.co/KwaiVGI/3DTrajMaster) and place them in the `CogVideo/weights` directory. Then, download the dataset from [here](https://huggingface.co/datasets/KwaiVGI/360Motion-Dataset). Please note that in both training stages, we use only 11 camera poses and exclude the last camera pose as the novel pose setting.
 
-3. **[Inference on Generalizable Prompts]** Change root path to `inference`. Note a higher LoRA scale and more annealed steps can improve accuracy in prompt generation but may result in lower visual quality. For entity input, you can use GPT to enhance the description to an appropriate length, such as "Generate a detailed description of approximately 20 words".
+3. **[Inference on Generalizable Prompts]** Change root path to `CogVideo/inference`. Note a higher LoRA scale and more annealed steps can improve accuracy in prompt generation but may result in lower visual quality. For entity input, you can use GPT to enhance the description to an appropriate length, such as "Generate a detailed description of approximately 20 words".
 
     ```bash
     python 3dtrajmaster_inference.py \
@@ -84,7 +84,7 @@ https://github.com/user-attachments/assets/a49e46d3-92d0-42ec-a89f-a9d43919f620
         --lora_scale 0.6 \
         --annealed_sample_step 20 \
         --seed 24 \
-        --output_path output
+        --output_path output_example
     ```
 
     | Argument                | Description |
@@ -126,7 +126,7 @@ https://github.com/user-attachments/assets/a49e46d3-92d0-42ec-a89f-a9d43919f620
 
 #### Training
 
-1. Change root path to `finetune`. First, train lora module to fit the synthetic data domain.
+1. Change root path to `CogVideo/finetune`. First, train lora module to fit the synthetic data domain.
 
     ```bash
     bash finetune_single_rank_lora.sh
