@@ -1,0 +1,222 @@
+{
+  "0": {
+    "video_name": "D_loc1_66_t1n36_0042_Hemi12_1",
+    "entity_prompts": [ "a fire spirit with long, twisting flames resembling flowing red and orange hair, a bright yellow core" ],
+    "loc_prompt": "park"
+  },
+  "1": {
+    "video_name": "D_loc1_81_t1n42_0051_Hemi12_1",
+    "entity_prompts": [ "a pickup truck with rugged dark green paint, extended cab, raised suspension, and a modest cargo bed cover" ],
+    "loc_prompt": "wind farm"
+  },
+  "2": {
+    "video_name": "D_loc1_541_t1n37_021d_Hemi12_1",
+    "entity_prompts": [ "a rabbit with a body covered in soft fur, quick hops, and a playful demeanor, showcasing its energy" ],
+    "loc_prompt": "urban rooftop garden"
+  },
+  "3": {
+    "video_name": "D_loc2_17_t1n8_0011_Hemi12_1",
+    "entity_prompts": [ "a disaster rescue robot with reinforced limbs, advanced AI, and a rugged body designed to navigate" ],
+    "loc_prompt": "sunset beach"
+  },
+  "4": {
+    "video_name": "D_loc2_482_t1n48_01e2_Hemi12_1",
+    "entity_prompts": [ "a man with short spiky blonde hair, slim build, a black trench coat, blue jeans, and brown hiking shoes" ],
+    "loc_prompt": "riverbank"
+  },
+  "5": {
+    "video_name": "D_loc3_323_t1n15_0143_Hemi12_1",
+    "entity_prompts": [ "a cloud creature with billowing white and gray plumes forming a soft, rounded body, wisps of darker fog" ],
+    "loc_prompt": "coral reef"
+  },
+  "6": {
+    "video_name": "D_loc3_568_t1n3_0238_Hemi12_1",
+    "entity_prompts": [ "a woman with long straight black hair, toned build, a blue denim jacket, light gray leggings, and black slip-on shoes" ],
+    "loc_prompt": "cave"
+  },
+  "7": {
+    "video_name": "D_loc4_1174_t1n9_0496_Hemi12_1",
+    "entity_prompts": [ "a polar bear with thick white fur, strong paws, and a black nose, embodying the essence of the Arctic" ],
+    "loc_prompt": "mall lobby"
+  },
+  "8": {
+    "video_name": "D_loc5_440_t1n35_01b8_Hemi12_1",
+    "entity_prompts": [ "a dolphin with sleek grey skin, a curved dorsal fin, and intelligent, playful eyes, reflecting its nature" ],
+    "loc_prompt": "sunset beach"
+  },
+  "9": {
+    "video_name": "D_loc5_1210_t1n34_04ba_Hemi12_1",
+    "entity_prompts": [ "a moose with a body covered in thick brown fur, massive antlers, and a bulky frame" ],
+    "loc_prompt": "rainforest"
+  },
+  "10": {
+    "video_name": "D_loc1_806_t2n2_0326_Hemi12_1",
+    "entity_prompts": [
+      "a porcupine with a body covered in spiky brown quills, a small nose, and curious eyes",
+      "a woman with long straight black hair, toned build, a blue denim jacket, light gray leggings, and black slip-on shoes"
+    ],
+    "loc_prompt": "coral reef"
+  },
+  "11": {
+    "video_name": "D_loc1_886_t2n25_0376_Hemi12_1",
+    "entity_prompts": [
+      "a man with medium-length straight brown hair, tall and slender, a gray crew-neck t-shirt, beige trousers, dark green sneakers",
+      "a wolf with thick silver-gray fur, alert golden eyes, and a lean yet strong body, exuding confidence and boldness"
+    ],
+    "loc_prompt": "urban rooftop garden"
+  },
+  "12": {
+    "video_name": "D_loc1_1276_t2n30_04fc_Hemi12_1",
+    "entity_prompts": [
+      "a man with short curly red hair, average build, a black leather jacket, dark blue cargo pants, and white sneakers",
+      "a fox with sleek russet fur, a bushy tail tipped with black, and bright green and cunning eyes"
+    ],
+    "loc_prompt": "sunset beach"
+  },
+  "13": {
+    "video_name": "D_loc2_1442_t2n36_05a2_Hemi12_1",
+    "entity_prompts": [
+      "a storm entity with dark swirling clouds as a body, streaks of electric blue lightning shooting across it",
+      "a surveillance drone robot with extendable camera arms, thermal vision, and a stealth black body"
+    ],
+    "loc_prompt": "swamp"
+  },
+  "14": {
+    "video_name": "D_loc5_65_t2n23_0041_Hemi12_1",
+    "entity_prompts": [
+      "a woman with shoulder-length wavy brown hair, slim build, a green parka, black leggings, and gray hiking boots",
+      "a parrot with bright red, blue, and yellow feathers, a curved beak, and sharp intelligent eyes"
+    ],
+    "loc_prompt": "snowy tundra"
+  },
+  "15": {
+    "video_name": "D_loc5_120_t2n37_0078_Hemi12_1",
+    "entity_prompts": [
+      "a compact electric vehicle with a silver finish, aerodynamic profile, and efficient battery",
+      "a fox with sleek russet fur, a bushy tail tipped with black, and bright green and cunning eyes"
+    ],
+    "loc_prompt": "night city square"
+  },
+  "16": {
+    "video_name": "D_loc5_1010_t2n2_03f2_Hemi12_1",
+    "entity_prompts": [
+      "a man with short curly red hair, average build, a black leather jacket, dark blue cargo pants, and white sneakers",
+      "a woman with long wavy blonde hair, petite figure, a red floral dress, white sandals, and a yellow shoulder bag"
+    ],
+    "loc_prompt": "mall lobby"
+  },
+  "17": {
+    "video_name": "D_loc5_1095_t2n37_0447_Hemi12_1",
+    "entity_prompts": [
+      "a companion robot with a friendly digital face, a smooth white exterior, and social interaction algorithms",
+      "a man with short straight black hair, tall and lean build, a navy blue sweater, khaki shorts, and brown sandals"
+    ],
+    "loc_prompt": "sunset beach"
+  },
+  "18": {
+    "video_name": "D_loc5_1290_t2n36_050a_Hemi12_1",
+    "entity_prompts": [
+      "a firefighting robot with a water cannon arm, heat sensors, and durable red-and-silver exterior",
+      "a penguin with a body covered in smooth black-and-white feathers, short wings, and webbed feet"
+    ],
+    "loc_prompt": "swamp"
+  },
+  "19": {
+    "video_name": "D_loc5_1440_t2n35_05a0_Hemi12_1",
+    "entity_prompts": [
+      "a fire spirit with long, twisting flames resembling flowing red and orange hair, a bright yellow core",
+      "a moose with a body covered in thick brown fur, massive antlers, and a bulky frame"
+    ],
+    "loc_prompt": "forest"
+  },
+  "20": {
+    "video_name": "D_loc1_176_t3n26_00b0_Hemi12_1",
+    "entity_prompts": [
+      "a horse with chestnut brown fur, muscular legs, a slim neck, and a flowing mane, exuding strength and grace",
+      "a flamingo with a body covered in pink feathers, long slender legs, and a gracefully curved neck",
+      "a wolf with thick silver-gray fur, alert golden eyes, and a lean yet strong body, exuding confidence and boldness"
+    ],
+    "loc_prompt": "abandoned factory"
+  },
+  "21": {
+    "video_name": "D_loc1_196_t3n32_00c4_Hemi12_1",
+    "entity_prompts": [
+      "a man with short spiky blonde hair, slim build, a black trench coat, blue jeans, and brown hiking shoes",
+      "a polar bear with thick white fur, strong paws, and a black nose, embodying the essence of the Arctic",
+      "a deer with sleek tan fur, long slender legs, a graceful neck, and tiny antlers atop its head"
+    ],
+    "loc_prompt": "desert"
+  },
+  "22": {
+    "video_name": "D_loc1_536_t3n1_0218_Hemi12_1",
+    "entity_prompts": [
+      "a tiger with a pristine white coat marked by bold black stripes, bright blue eyes, and a graceful, poised form",
+      "a firefighting robot with a water cannon arm, heat sensors, and durable red-and-silver exterior",
+      "a sporty roadster with a convertible top, silver trim, and a powerful engine"
+    ],
+    "loc_prompt": "snowy street"
+  },
+  "23": {
+    "video_name": "D_loc1_1041_t3n22_0411_Hemi12_1",
+    "entity_prompts": [
+      "a storm entity with dark swirling clouds as a body, streaks of electric blue lightning shooting across it",
+      "a regal lion with a thick, flowing golden mane, sharp brown eyes, and a powerful muscular frame",
+      "a man with short straight black hair, tall and lean build, a navy blue sweater, khaki shorts, and brown sandals"
+    ],
+    "loc_prompt": "swamp"
+  },
+  "24": {
+    "video_name": "D_loc1_1226_t3n24_04ca_Hemi12_1",
+    "entity_prompts": [
+      "a woman with short blonde hair, slim athletic build, a red leather jacket, dark blue jeans, and white sneakers",
+      "a private jet with a shiny silver body, elongated wings, a slim nose, and a compact rear stabilizer",
+      "a wolf with a body covered in thick silver fur, sharp ears, and piercing yellow eyes, showcasing its alertness"
+    ],
+    "loc_prompt": "prairie"
+  },
+  "25": {
+    "video_name": "D_loc2_1287_t3n5_0507_Hemi12_1",
+    "entity_prompts": [
+      "a panda with a body covered in fluffy black-and-white fur, a round face, and gentle eyes, radiating warmth",
+      "a man with short straight black hair, tall and lean build, a navy blue sweater, khaki shorts, and brown sandals",
+      "an industrial welding robot with articulated arms, a laser precision welder, and heat-resistant shields"
+    ],
+    "loc_prompt": "urban rooftop garden"
+  },
+  "26": {
+    "video_name": "D_loc2_1392_t3n4_0570_Hemi12_1",
+    "entity_prompts": [
+      "a fluttering butterfly with intricate wing patterns, vivid colors, and graceful flight",
+      "a man with buzz-cut blonde hair, stocky build, a gray zip-up sweater, black shorts, and red basketball shoes",
+      "a giraffe with golden-yellow fur, long legs, a tall slender neck, and patches of brown spots, exuding elegance and calm"
+    ],
+    "loc_prompt": "volcanic landscape"
+  },
+  "27": {
+    "video_name": "D_loc3_1473_t3n23_05c1_Hemi12_1",
+    "entity_prompts": [
+      "a firefighting robot with a water cannon arm, heat sensors, and durable red-and-silver exterior",
+      "a crocodile with a body covered in scaly green skin, a powerful tail, and sharp teeth",
+      "a rabbit with a body covered in soft fur, quick hops, and a playful demeanor, showcasing its energy"
+    ],
+    "loc_prompt": "coastal harbor"
+  },
+  "28": {
+    "video_name": "D_loc4_849_t3n28_0351_Hemi12_1",
+    "entity_prompts": [
+      "a man with short black wavy hair, lean figure, a green and yellow plaid shirt, dark brown pants, and black suede shoes",
+      "a sedan with a sleek metallic silver body, long wheelbase, a low-profile hood, and a small rear spoiler",
+      "a gazelle with a body covered in sleek tan fur, long legs, and elegant curved horns, showcasing its grace"
+    ],
+    "loc_prompt": "desert"
+  },
+  "29": {
+    "video_name": "D_loc5_865_t3n34_0361_Hemi12_1",
+    "entity_prompts": [
+      "a man with a shaved head, broad shoulders, a gray graphic t-shirt, dark jeans, and brown leather boots",
+      "a foggy apparition with pale gray wisps drifting together in a soft, undefined form, tiny white sparkles",
+      "a jaguar with a golden-yellow coat dotted with intricate black rosettes, deep green eyes, and a muscular build"
+    ],
+    "loc_prompt": "fjord"
+  }
+}
