@@ -49,7 +49,7 @@ https://github.com/user-attachments/assets/efe1870f-4168-4aff-98b8-dbd9e3802928
 
 > **(1) Access to Our Internal Video Model**
 
-As per company policy, we may not release the proprietary trained model at this time. However, if you wish to access our internal model, please submit your request via (1) [a shared document](https://docs.google.com/spreadsheets/d/1HL96IS33fyzrDeXTt3hJ80ZsnfRBzDoKh8wparoBAGI/edit?pli=1&gid=0#gid=0) or (2) directly via email (`lemonaddie0909@gmail.com`); we will respond to requests with the generated video as quickly as possible.
+As per company policy, we may not release the proprietary trained model at this time. However, if you wish to access our internal model, please submit your request via (1) [a shared document](https://docs.google.com/spreadsheets/d/1HL96IS33fyzrDeXTt3hJ80ZsnfRBzDoKh8wparoBAGI/edit?pli=1&gid=0#gid=0) or (2) directly via email (`lemonaddie0909@gmail.com`, recommended); we will respond to requests with the generated video as quickly as possible.
 Please ensure your request includes the following:
 
 1. Entity prompts (1–3, with a maximum of 42 tokens, approximately 20 words per entity)
