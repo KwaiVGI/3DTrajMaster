@@ -74,7 +74,7 @@ https://github.com/user-attachments/assets/a49e46d3-92d0-42ec-a89f-a9d43919f620
 
 2. **[Download Weights and Dataset]** Download the pretrained checkpoints (CogVideo-5B, LoRA, and injector) from [here](https://huggingface.co/KwaiVGI/3DTrajMaster) and place them in the `CogVideo/weights` directory. Then, download the dataset from [here](https://huggingface.co/datasets/KwaiVGI/360Motion-Dataset). Please note that in both training stages, we use only 11 camera poses and exclude the last camera pose as the novel pose setting.
 
-3. **[Inference on Generalizable Prompts]** Change root path to `CogVideo/inference`. Note a higher LoRA scale and more annealed steps can improve accuracy in prompt generation but may result in lower visual quality. For entity input, you can use GPT to enhance the description to an appropriate length, such as "Generate a detailed description of approximately 20 words".
+3. **[Inference on Generalizable Prompts]** Change root path to `CogVideo/inference`. Note a higher LoRA scale and more annealed steps can improve accuracy in prompt generation but may result in lower visual quality. You can modify 'test_sets.json' to add novel entity&location prompts. For entity input, you can use GPT to enhance the description to an appropriate length, such as "Generate a detailed description of approximately 20 words".
 
     ```bash
     python 3dtrajmaster_inference.py \
