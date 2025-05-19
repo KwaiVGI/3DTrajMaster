@@ -1,6 +1,6 @@
 ## ___***3DTrajMaster: Mastering 3D Trajectory for Multi-Entity Motion in Video Generation***___
 <div align="center">
-<img src='https://3dtrajmaster.github.io/img/logo.png' style="height:120px"></img>
+<img src='imgs/logo.png' style="height:90px"></img>
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue) &nbsp;
  <a href='http://fuxiao0719.github.io/projects/3dtrajmaster'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;
